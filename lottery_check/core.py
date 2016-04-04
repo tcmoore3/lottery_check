@@ -80,3 +80,24 @@ def get_prizes(matching_numbers, powerball_match):
     prizes = {True: {0: 0, 1: 4, 2: 4, 3: 7, 4: 100, 5: 50000, 6: 'Jackpot!'},
             False: {0: 0, 1: 0, 2: 0, 3: 7, 4: 100, 5: 1000000}}
     return prizes[powerball_match][len(matching_numbers)]
+
+def check_ticket_interactive():
+    pb_match = {True: "Powerball match!", False: ' '}
+    winning_numbers = get_winning_numbers()
+    total_prize = 0
+    while True:
+        input_numbers = raw_input('Insert numbers:')
+        if input_numbers == '':
+            break
+        numbers = [int(x) for x in input_numbers.split()]
+        assert(len(numbers) == 6)
+        matches, pb = check_numbers(numbers, winning_numbers)
+        prize = get_prizes(matches, pb)
+        total_prize += prize
+        if len(matches) == 0:
+            print 'No matches'
+        else:
+            output = ' '.join(str(m) for m in matches) 
+            output += ' {0} -> ${1}'.format(pb_match[pb], prize)
+            print output
+    print 'You won ${0}.'.format(total_prize)
