@@ -57,6 +57,9 @@ def check_ticket(fn):
     print '--------------------------'
     numbers = np.loadtxt(fn, dtype=np.int32)
     winning_numbers = get_winning_numbers()
+    white_balls = ' '.join([str(x) for x in winning_numbers['white balls']])
+    print 'Winning numbers: {0} Powerball: {1}'.format(white_balls,
+            winning_numbers['powerball'])
     pb_match = {True: "Powerball match!", False: ' '}
     total_prize = 0
     for row in numbers:
