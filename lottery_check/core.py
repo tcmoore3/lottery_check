@@ -67,7 +67,7 @@ def check_ticket(fn):
         prize = get_prizes(matches, pb)
         total_prize += prize
         if len(matches) == 0:
-            print 'No matches'
+            print 'No matches. You suck!'
         else:
             output = ' '.join(str(m) for m in matches) 
             output += ' {0} -> ${1}'.format(pb_match[pb], prize)
@@ -98,7 +98,7 @@ def check_ticket_interactive():
             return
         total_prize += prize
         if len(matches) == 0:
-            print 'No matches'
+            print 'No matches. You suck.'
         else:
             output = ' '.join(str(m) for m in matches) 
             output += ' {0} -> ${1}'.format(pb_match[pb], prize)
