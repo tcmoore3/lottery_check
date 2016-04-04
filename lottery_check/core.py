@@ -93,6 +93,9 @@ def check_ticket_interactive():
         assert(len(numbers) == 6)
         matches, pb = check_numbers(numbers, winning_numbers)
         prize = get_prizes(matches, pb)
+        if prize == 'Jackpot!':
+            print prize
+            return
         total_prize += prize
         if len(matches) == 0:
             print 'No matches'
